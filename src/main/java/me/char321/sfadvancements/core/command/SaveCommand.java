@@ -16,11 +16,11 @@ public class SaveCommand implements SubCommand {
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         try {
             SFAdvancements.getAdvManager().save();
-            sender.sendMessage("Successfully saved advancements.");
+            sender.sendMessage("成功儲存進度");
             return true;
         } catch(IOException e) {
-            sender.sendMessage("An error occured while saving advancements!");
-            sender.sendMessage("Check the console for details.");
+            sender.sendMessage("儲存進度時出現錯誤!");
+            sender.sendMessage("查看後台以獲取詳細資訊");
             SFAdvancements.logger().log(Level.SEVERE, e, () -> "Could not save advancements");
             return false;
         }

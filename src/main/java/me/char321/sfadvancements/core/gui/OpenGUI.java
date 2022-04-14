@@ -33,7 +33,7 @@ public class OpenGUI {
     }
 
     public OpenGUI(UUID player) {
-        this.inventory = Bukkit.createInventory(null, 54, ChatColor.BLUE + "Advancements");
+        this.inventory = Bukkit.createInventory(null, 54, ChatColor.BLUE + "進度");
         this.player = player;
         refresh();
     }
@@ -88,9 +88,9 @@ public class OpenGUI {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
         meta.setOwningPlayer(Bukkit.getOfflinePlayer(player));
-        meta.setDisplayName(ChatColor.YELLOW + "Stats");
+        meta.setDisplayName(ChatColor.YELLOW + "狀態");
         StringBuilder completedadvancements = new StringBuilder();
-        completedadvancements.append(ChatColor.GRAY).append("Completed Advancements: ");
+        completedadvancements.append(ChatColor.GRAY).append("已完成進度: ");
         int completed = SFAdvancements.getAdvManager().getProgress(player).getCompletedAdvancements().size();
         int total = SFAdvancements.getRegistry().getAdvancements().size();
         if(completed == total) {
@@ -112,17 +112,17 @@ public class OpenGUI {
 
         ItemStack leftArrow;
         if (page == 1) {
-            leftArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7Previous Page", pageLore);
+            leftArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7上一頁", pageLore);
         } else {
-            leftArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&ePrevious Page", pageLore);
+            leftArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&e上一頁", pageLore);
         }
         inventory.setItem(1, leftArrow);
 
         ItemStack rightArrow;
         if (page == maxPage) {
-            rightArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7Next Page", pageLore);
+            rightArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7下一頁", pageLore);
         } else {
-            rightArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&eNext Page", pageLore);
+            rightArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&e下一頁", pageLore);
         }
         inventory.setItem(7, rightArrow);
     }
@@ -154,7 +154,7 @@ public class OpenGUI {
         if (scroll == 0) {
             scrollUp = MenuItems.YELLOW;
         } else {
-            scrollUp = new CustomItemStack(Material.ARROW, "&eScroll Up");
+            scrollUp = new CustomItemStack(Material.ARROW, "&e向上");
         }
         inventory.setItem(17, scrollUp);
 
@@ -164,7 +164,7 @@ public class OpenGUI {
         if (scroll >= maxScroll) {
             scrollDown = MenuItems.YELLOW;
         } else {
-            scrollDown = new CustomItemStack(Material.ARROW, "&eScroll Down");
+            scrollDown = new CustomItemStack(Material.ARROW, "&e向下");
         }
         inventory.setItem(53, scrollDown);
     }

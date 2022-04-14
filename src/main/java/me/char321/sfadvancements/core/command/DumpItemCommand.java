@@ -22,18 +22,18 @@ public class DumpItemCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage("you must be a player to execute this command");
+            sender.sendMessage("你必須是玩家才能執行此指令");
             return false;
         }
 
         Player p = (Player) sender;
 
-        sender.sendMessage("Representing the item in your hand in yml...");
+        sender.sendMessage("正在將你手上的物品寫成yml檔案...");
         ItemStack item = p.getInventory().getItemInMainHand();
-        SFAdvancements.info("Representing " + item);
+        SFAdvancements.info("物品表示 " + item);
 
         if(!item.hasItemMeta()) {
-            SFAdvancements.info("This item can be represented with just the string \n" + item.getType().name());
+            SFAdvancements.info("這個物品可以只用字串來表示 \n" + item.getType().name());
         }
 
         ItemMeta im = item.getItemMeta();
@@ -44,7 +44,7 @@ public class DumpItemCommand implements SubCommand {
         if (itemData.isPresent()) {
             String id = itemData.get();
             if (SlimefunUtils.isItemSimilar(item, SlimefunItem.getById(id).getItem(), true)) {
-                SFAdvancements.info("This item can be represented with just the string \n" + id);
+                SFAdvancements.info("這個物品可以只用字串來表示 \n" + id);
             }
             type = id;
         }
@@ -58,13 +58,13 @@ public class DumpItemCommand implements SubCommand {
                 representation.append("  - ").append(s.replace(ChatColor.COLOR_CHAR, '&')).append("\n");
             }
         }
-        SFAdvancements.info("If you only care about looks, you can represent the item with \n" + representation);
+        SFAdvancements.info("如果你只關心外觀, 你可以用以下方式表示該物品 \n" + representation);
 
         YamlConfiguration configuration = new YamlConfiguration();
         configuration.set("item", item);
-        SFAdvancements.info("Full yml representation: \n" + configuration.saveToString());
+        SFAdvancements.info("完整的yml檔案表示: \n" + configuration.saveToString());
 
-        sender.sendMessage("Done! Check the console for details.");
+        sender.sendMessage("完成! 查看後台的詳細資訊.");
         return true;
     }
 

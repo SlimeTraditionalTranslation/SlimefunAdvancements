@@ -32,15 +32,15 @@ public class SFACommand implements CommandExecutor {
                     if (sender.hasPermission("sfa.command."+subcmd.getCommandName())) {
                         return subcmd.onExecute(sender, command, label, args);
                     } else {
-                        sender.sendMessage("You do not have permission to use this command.");
+                        sender.sendMessage("你沒有權限使用此指令.");
                         return false;
                     }
                 }
             }
-            sender.sendMessage("Unknown subcommand! Available subcommands are: " + subcommands.stream().map(SubCommand::getCommandName).collect(Collectors.joining(", ")));
+            sender.sendMessage("未知的子指令! 可用的子指令是: " + subcommands.stream().map(SubCommand::getCommandName).collect(Collectors.joining(", ")));
             return false;
         }
-        sender.sendMessage("SFAdvancements version " + SFAdvancements.instance().getDescription().getVersion());
+        sender.sendMessage("SFAdvancements 版本 " + SFAdvancements.instance().getDescription().getVersion());
         return true;
     }
 
