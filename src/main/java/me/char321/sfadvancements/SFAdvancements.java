@@ -77,11 +77,11 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
         }
 
         //allow other plugins to register their criteria completers
-        info("Waiting for server start...");
+        info("等待伺服器啟動...");
         Utils.runLater(() -> {
-            info("Loading groups from config...");
+            info("從設定中加載群組...");
             loadGroups();
-            info("Loading advancements from config...");
+            info("從設定中加載進度...");
             loadAdvancements();
         }, 0L);
 

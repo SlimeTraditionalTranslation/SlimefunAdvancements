@@ -26,35 +26,35 @@ public class ImportCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "Usage: /" + label + " import <plugin>");
+            sender.sendMessage(ChatColor.RED + "用法: /" + label + " import <plugin>");
             return false;
         }
 
         Plugin pl = Bukkit.getPluginManager().getPlugin(args[1]);
         if (pl == null) {
-            sender.sendMessage(ChatColor.RED + "Plugin " + args[1] + " not found.");
+            sender.sendMessage(ChatColor.RED + "插件 " + args[1] + " 未找到.");
             return false;
         }
 
-        sender.sendMessage("Importing advancements from " + pl.getName());
+        sender.sendMessage("導入進度來自 " + pl.getName());
 
         InputStream advInputStream = pl.getResource("sfadvancements.yml");
         if (advInputStream == null) {
-            sender.sendMessage(ChatColor.RED + "Plugin " + pl.getName() + " does not have default advancements.");
+            sender.sendMessage(ChatColor.RED + "插件 " + pl.getName() + " 沒有預設的進度.");
             return false;
         }
 
         InputStream groupInputStream = pl.getResource("sfagroups.yml");
         if (groupInputStream == null) {
-            sender.sendMessage(ChatColor.YELLOW + "Plugin " + pl.getName() + " does not specify default groups.");
-            sender.sendMessage(ChatColor.YELLOW + "Any imported advancements may have unknown groups.");
+            sender.sendMessage(ChatColor.YELLOW + "插件 " + pl.getName() + " 沒有預設指定群組.");
+            sender.sendMessage(ChatColor.YELLOW + "任何導入的進度都有可能有未知的群組.");
         }
 
         saveBackups();
         importGroups(pl, groupInputStream);
         importAdvancements(pl, advInputStream);
 
-        sender.sendMessage("Done! Restart the server or use /sfa reload to apply the changes.");
+        sender.sendMessage("完成! 重新啟動伺服器或是使用 /sfa reload 來應用更改.");
         return true;
     }
 

@@ -1,5 +1,6 @@
 name: SFAdvancements
 version: '${project.version}'
+description: 黏液科技附加 黏液科技進度 繁體翻譯版.
 main: me.char321.sfadvancements.SFAdvancements
 api-version: 1.14
 depend: [ Slimefun ]

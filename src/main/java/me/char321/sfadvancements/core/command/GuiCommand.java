@@ -13,7 +13,7 @@ public class GuiCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("you can't open a gui");
+            sender.sendMessage("你無法打開GUI");
             return false;
         }
         SFAdvancements.getGuiManager().displayGUI((Player) sender);

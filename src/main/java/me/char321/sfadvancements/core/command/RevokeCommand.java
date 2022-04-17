@@ -18,13 +18,13 @@ public class RevokeCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ChatColor.RED + "Usage: /" + label + " revoke <player> <advancement>");
+            sender.sendMessage(ChatColor.RED + "用法: /" + label + " revoke <player> <advancement>");
             return false;
         }
 
         Player p = Bukkit.getPlayer(args[1]);
         if (p == null) {
-            sender.sendMessage(ChatColor.RED + "Could not find player " + args[1]);
+            sender.sendMessage(ChatColor.RED + "無法找到玩家 " + args[1]);
             return false;
         }
 
@@ -33,15 +33,15 @@ public class RevokeCommand implements SubCommand {
             for (NamespacedKey adv : progress.getCompletedAdvancements()) {
                 progress.revokeAdvancement(adv);
             }
-            sender.sendMessage("Successfully revoked all achievements!");
+            sender.sendMessage("成功撤銷所有的進度!");
             return true;
         }
 
         if (!progress.revokeAdvancement(NamespacedKey.fromString(args[2]))) {
-            sender.sendMessage(ChatColor.RED + "Could not revoke advancement " + args[2] + " from player " + args[1]);
+            sender.sendMessage(ChatColor.RED + "無法撤銷進度 " + args[2] + " 來自玩家 " + args[1]);
             return false;
         } else {
-            sender.sendMessage("Successfully revoked!");
+            sender.sendMessage("已成功撤銷!");
             return true;
         }
     }
