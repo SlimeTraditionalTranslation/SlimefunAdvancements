@@ -184,5 +184,12 @@
             <version>1.24.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.SlimeTraditionalTranslation</groupId>
+            <artifactId>dough</artifactId>
+            <version>7142669</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>

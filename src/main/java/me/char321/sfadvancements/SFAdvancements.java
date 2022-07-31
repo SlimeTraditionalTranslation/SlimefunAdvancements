@@ -1,8 +1,9 @@
 package me.char321.sfadvancements;
 
+import io.github.bakedlibs.dough.updater.GitHubBuildsUpdater;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
+//import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
 import me.char321.sfadvancements.api.AdvancementBuilder;
 import me.char321.sfadvancements.api.AdvancementGroup;
 import me.char321.sfadvancements.api.criteria.CriteriaTypes;
@@ -110,9 +111,9 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
     }
 
     private void autoUpdate() {
-        if (config.getBoolean("auto-update") && !getDescription().getVersion().contains("MODIFIED")) {
+        if (config.getBoolean("auto-update") && !getDescription().getVersion().contains("MAGd_")) {
             info("Checking for updates...");
-            GitHubBuildsUpdater updater = new GitHubBuildsUpdater(this, this.getFile(), "qwertyuioplkjhgfd/SlimefunAdvancements/main");
+            GitHubBuildsUpdater updater = new GitHubBuildsUpdater(this, this.getFile(), "SlimeTraditionalTranslation/SlimefunAdvancements/main");
             updater.start();
         }
     }
@@ -139,8 +140,9 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
         }
         groupConfig = YamlConfiguration.loadConfiguration(groupFile);
         for (String key : groupConfig.getKeys(false)) {
+            String background = groupConfig.getString(key + ".background", "BEDROCK");
             ItemStack display = ConfigUtils.getItem(groupConfig, key + ".display");
-            AdvancementGroup group = new AdvancementGroup(key, display);
+            AdvancementGroup group = new AdvancementGroup(key, display, background);
             group.register();
         }
     }

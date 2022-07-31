@@ -18,7 +18,10 @@
 
 yml 中的每一項代表一個進度組, 其中 key 是組的 key.<br>
 key 用於引用 `advancements.yml` 中的組.<br>
-每個組都有一個 `display`, 它是一個物品. 它應該是一個物品的代表.
+每個組都有一個 `display`, 它是一個物品. 它應該是一個物品的代表.<br>
+該物品用於在 GUI 中組別顯示圖標.<br>
+你可以選擇為組指定一個 `background` 字串, 它在原版 GUI 中使用. (預設情況下, 組將會使用基岩做為材質)<br>
+它應該是材質文件名稱. 這些文件名可以在 https://mcasset.cloud/ 的 `assets/minecraft/textures/block/` 中找到指定版本.
 
 ### 物品代表
 
@@ -34,9 +37,11 @@ key 用於引用 `advancements.yml` 中的組.<br>
 ```yaml
 my_cool_group:
   display: NETHER_STAR
+  background: glass
 
 my_other_group:
   display: ELECTRIC_MOTOR
+  background: redstone_block
 ```
 
 在 `groups.yml` 的 #2 例子
@@ -76,9 +81,11 @@ hi:
 這是你所有進度的地方.<br>
 每個任何代表一個進度，其中 key 是進度的關鍵.<br>
 (它存儲為 NamespacedKey `sfadvancements:<key>`)<br>
-進度包含組(group)、顯示(display)、名稱(name)、條件(criteria)和可選獎勵(optional rewards).<br>
+進度包含組(group)、父級(optional parent)、顯示(display)、名稱(name)、條件(criteria)和可選獎勵(optional rewards).<br>
 
 組(group) 是 `groups.yml` 中定義的 id .
+
+父級(parent) 是一個不同進度類別的 ID. (對於進度樹)
 
 顯示(display) 是一個物品.
 
@@ -128,6 +135,9 @@ hi:
   - 參數 'amount', 多少隻怪物需要殺死
   - 有一個字串參數 `entity` 表示要擊殺的生物
   - 實體類型通常是小寫, 用下劃線分隔 (例如. `stray`, `cave_spider`, `glow_squid` 等等.)
+- `搜尋(search)`
+  - 用於搜尋黏液科技指南中的一個字串
+  - 字串參數為 `search`, 要搜尋確切的字串指定名稱
 
 #### 獎勵
 
@@ -161,7 +171,7 @@ hi:
 - ~~權限~~
 - ~~加載默認進度 (來自其他插件)~~
 - 更好的 README 文件, .github, ~~構建頁面~~
-- tree
+- ~~進度樹~~
 - 進度 api (瘋狂)
 - 作弊選單
 - 文檔

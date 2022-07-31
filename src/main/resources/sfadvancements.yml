@@ -171,3 +171,16 @@ ender_charms:
       type: research
       research: "slimefun:ender_talismans"
 
+who_asked:
+  group: other
+  display:
+    type: MAP
+    name: "&a誰說的?"
+    lore:
+      - "搜尋「誰說的」"
+  name: "&a[誰說的?]"
+  criteria:
+    ask:
+      name: "搜尋誰說的"
+      type: search
+      search: "誰說的"
