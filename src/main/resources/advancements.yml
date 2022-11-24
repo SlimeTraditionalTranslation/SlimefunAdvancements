@@ -184,3 +184,4 @@ who_asked:
       name: "搜尋誰說的"
       type: search
       search: "誰說的"
+  hidden: true

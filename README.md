@@ -81,7 +81,7 @@ hi:
 這是你所有進度的地方.<br>
 每個任何代表一個進度，其中 key 是進度的關鍵.<br>
 (它存儲為 NamespacedKey `sfadvancements:<key>`)<br>
-進度包含組(group)、父級(optional parent)、顯示(display)、名稱(name)、條件(criteria)和可選獎勵(optional rewards).<br>
+進度包含組(group)、父級(optional parent)、顯示(display)、名稱(name)、條件(criteria)、可選擇隱藏(optionally hidden)和可選獎勵(optional rewards).<br>
 
 組(group) 是 `groups.yml` 中定義的 id .
 
@@ -93,7 +93,11 @@ hi:
 
 (顯示和名稱支持帶有 `&` 的顏色代碼)
 
-條件是一個部分，其中每個物品是一個條件，關鍵是條件 key.
+條件是一個部分，其中每個物品是一個條件，關鍵是條件 key. (詳情如下)
+
+`hidden` 是 `true` 或者 `false`. 如果是 `true` 默認情況下,將在進度和選單當中進行隱藏.
+
+獎勵是不同獎勵類型的一部分 (e.g. `command`s, 詳情如下)
 
 #### 條件
 
@@ -124,7 +128,9 @@ hi:
   - 放置方塊
   - 有一個物品參數 `item`, 表示要放置的物品
   - 有一個數量參數 `amount`, 表示要放置的物品的數量
-  - 請注意，沒有針對玩家反復破壞方塊的保護措施，因此對於大多數物品，只需使用一個作為數量
+  - 請注意，沒有針對玩家反復破壞方塊的保護措施，因此對於大多數物品，將 `amount` 設置為 1 是最恰當的
+- `破壞(break)`
+  - 像 `放置(place)` 但對於破壞方塊, 相同的參數
 - `研究(research)`
   - 完成研究
   - 有一個字串參數 `research`, 它是研究的命名空間 key
