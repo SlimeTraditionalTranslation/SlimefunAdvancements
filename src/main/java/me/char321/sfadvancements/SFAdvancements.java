@@ -111,7 +111,7 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
     }
 
     private void autoUpdate() {
-        if (config.getBoolean("auto-update") && !getDescription().getVersion().contains("MAGd_")) {
+        if (config.getBoolean("auto-update") && !getDescription().getVersion().contains("MAG")) {
             info("Checking for updates...");
             GitHubBuildsUpdater updater = new GitHubBuildsUpdater(this, this.getFile(), "SlimeTraditionalTranslation/SlimefunAdvancements/main");
             updater.start();
